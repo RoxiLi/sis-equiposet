@@ -111,6 +111,18 @@ export class AppComponent {
       },
       {
         type: 'subheading',
+        label: 'Repuestos',
+        children: [
+          {
+            type: 'link',
+            label: 'Bodegan',
+            route: '/apps/aio-table',
+            icon: icAssigment
+          },
+        ]
+      },
+      {
+        type: 'subheading',
         label: 'Apps',
         children: [
           {

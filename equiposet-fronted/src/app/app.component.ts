@@ -20,7 +20,7 @@ import icDollarSing from '@iconify/icons-fa-solid/dollar-sign';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'vex';
+  title = 'Gestión Equipos ET';
 
   constructor(private configService: ConfigService,
               private styleService: StyleService,

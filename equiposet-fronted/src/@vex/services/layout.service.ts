@@ -27,7 +27,7 @@ export class LayoutService {
   private _searchOpen = new BehaviorSubject<boolean>(false);
   searchOpen$ = this._searchOpen.asObservable();
 
-  isDesktop$ = this.breakpointObserver.observe(`(min-width: 1280px)`).pipe(
+  isDesktop$ = this.breakpointObserver.observe(`(min-width: 1200px)`).pipe(
     map(state => state.matches)
   );
   ltLg$ = this.breakpointObserver.observe(`(max-width: 1279px)`).pipe(

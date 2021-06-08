@@ -16,6 +16,15 @@ const routes: VexRoutes = [
             loadChildren: () => import('./modules/inventory/stock/stock.module').then(m => m.StockModule)
           },
         ]
+      },
+      {
+        path: 'management',
+        children: [
+          {
+            path: 'statement',
+            loadChildren: () => import('./modules/sales-management/statement/statement.module').then(m => m.StatementModule)
+          },
+        ]
       }
     ]
   },

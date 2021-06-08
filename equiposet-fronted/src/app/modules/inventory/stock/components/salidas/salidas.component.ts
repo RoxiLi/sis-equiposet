@@ -123,4 +123,8 @@ export class SalidasComponent implements OnInit,  AfterViewInit, OnDestroy{
   createSalida() {
 
   }
+
+    updateIngreso(row) {
+        
+    }
 }

@@ -13,6 +13,11 @@ module.exports = {
   node: {
     fs: 'empty'
   },
+  // resolve: {
+  //   fallback: {
+  //     fs: false
+  //   }
+  // },
   module: {
     rules: [
       {

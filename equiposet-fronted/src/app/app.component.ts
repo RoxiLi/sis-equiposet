@@ -96,6 +96,30 @@ export class AppComponent {
           },
         ]
       },
+      {
+        type: 'subheading',
+        label: 'Gestion interna',
+        children: [
+          {
+            type: 'link',
+            label: 'Cotización',
+            icon: icDollarSing,
+            route: '/management/stock',
+          },
+          {
+            type: 'link',
+            label: 'Reportes',
+            icon: icDollarSing,
+            route: '/management/statement',
+          },
+          {
+            type: 'link',
+            label: 'Pedidos a provedores',
+            icon: icDollarSing,
+            route: '/management/stock',
+          },
+        ]
+      },
 
     ];
   }

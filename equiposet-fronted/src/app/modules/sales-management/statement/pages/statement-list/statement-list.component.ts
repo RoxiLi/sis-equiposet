@@ -97,7 +97,7 @@ export class StatementListComponent implements OnInit, AfterViewInit, OnDestroy 
   }
 
   createStatement() {
-
+    this.router.navigate(['./create'], {relativeTo: this.route})
   }
   /** Selects all rows if they are not all selected; otherwise clear selection. */
   masterToggle() {

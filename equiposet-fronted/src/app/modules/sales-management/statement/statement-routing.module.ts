@@ -10,6 +10,10 @@ const routes: Routes = [
         path: '',
         loadChildren: () => import('./pages/statement-list/statement-list.module').then(m => m.StatementListModule)
       },
+      {
+        path: 'create',
+        loadChildren: () => import('./pages/statement-create/statement-create.module').then(m => m.StatementCreateModule)
+      },
     ]
   }
 

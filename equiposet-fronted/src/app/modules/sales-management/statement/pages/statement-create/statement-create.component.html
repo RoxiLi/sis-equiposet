@@ -1,1 +1,125 @@
-<p>statement-createyyyy works!</p>
+<!--<vex-empty-paciente *ngIf="!this.pacienteActual"></vex-empty-paciente>-->
+<ng-container >
+    <vex-secondary-toolbar current="Crear nueva reporte">
+        <vex-breadcrumbs [crumbs]="['Gestión interna', 'Reportes', 'Crear nuevo reporte']" fxFlex="auto"></vex-breadcrumbs>
+    </vex-secondary-toolbar>
+    <div @stagger class="p-gutter" vexContainer>
+        <h2 class="title mb-4" fxLayout="row" fxLayoutAlign="start center">
+    <span @scaleIn class="w-10 h-10 rounded-full text-primary mr-3 flex items-center justify-center bg-primary-light">
+      <ic-icon [icon]="icDescription" height="20px" width="20px"></ic-icon>
+    </span>
+            <span @fadeInRight class="block">Registro nuevo reporte</span>
+        </h2>
+
+        <div @fadeInUp class="card overflow-hidden">
+            <mat-vertical-stepper #verticalStepper="matVerticalStepper" [linear]="true">
+                <ng-template matStepperIcon="edit">
+                    <mat-icon [icIcon]="icDoneAll"></mat-icon>
+                </ng-template>
+
+                <ng-template matStepperIcon="done">
+                    <mat-icon [icIcon]="icDoneAll"></mat-icon>
+                </ng-template>
+                <mat-step [stepControl]="statementFormGroup">
+                    <form [formGroup]="statementFormGroup">
+                        <ng-template matStepLabel>Datos generales</ng-template>
+                        <div fxLayout="column" class="md:overflow-hidden lg:overflow-hidden xl:overflow-hidden mt-6">
+                            <div fxLayout="row wrap" fxLayoutGap="16px grid">
+                                <mat-form-field appearance="outline" fxFlex="33%" fxFlex.xs="100%" fxFlex.sm="50%">
+                                    <mat-label>PROPIETARIO</mat-label>
+                                    <input formControlName="propietario" matInput>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" fxFlex="33%" fxFlex.xs="100%" fxFlex.sm="50%">
+                                    <mat-label>EQUIPO</mat-label>
+                                    <input formControlName="equipo" matInput>
+                                </mat-form-field>
+                                <mat-form-field  appearance="outline" fxFlex="33%" fxFlex.xs="100%" fxFlex.sm="50%">
+                                    <mat-label>Fecha de reporte</mat-label>
+                                    <input [matDatepicker]="datepicker4"
+                                           formControlName="dateSatatement"
+                                           (click)="datepicker4.open()"
+                                           (focus)="datepicker4.open()"
+                                           [max]="maxDate" matInput>
+                                    <mat-datepicker-toggle [for]="datepicker4" class="block" matSuffix></mat-datepicker-toggle>
+                                    <mat-datepicker #datepicker4></mat-datepicker>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline"  fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="50%">
+                                    <mat-label>Estado</mat-label>
+                                    <input type="text" formControlName="estado" matInput>
+                                </mat-form-field>
+                                <div class="actions" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="8px">
+                                    <button (click)="verticalStepper.reset()" [disabled]="statementFormGroup.pristine" color="primary"
+                                            mat-button
+                                            type="button">LIMPIAR
+                                    </button>
+                                    <button [disabled]="statementFormGroup.invalid" color="primary"
+                                            mat-raised-button matStepperNext>
+                                        SIGUIENTE
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </mat-step>
+                <mat-step [stepControl]="statementFormGroup">
+                    <form [formGroup]="statementFormGroup">
+                        <ng-template matStepLabel>Servicios</ng-template>
+                        <div fxLayout="column" class="md:overflow-hidden lg:overflow-hidden xl:overflow-hidden mt-6">
+                            <div fxLayout="row wrap" fxLayoutGap="16px grid">
+                                <mat-form-field appearance="outline" fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="50%">
+                                    <mat-label>LUGAR DE SERVICIO</mat-label>
+                                    <input formControlName="placeService" matInput>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="50%">
+                                    <mat-label>Síntoma</mat-label>
+                                    <input formControlName="placeService" matInput>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" fxFlex="33%" fxFlex.xs="100%" fxFlex.sm="50%">
+                                    <mat-label>Horometro</mat-label>
+                                    <input type="number" formControlName="perimetroAbdominal" matInput>
+                                    <span class="px-5" matSuffix>h</span>
+                                </mat-form-field>
+                                <mat-form-field  appearance="outline" fxFlex="33%" fxFlex.xs="100%" fxFlex.sm="50%">
+                                    <mat-label>Fecha de servicio</mat-label>
+                                    <input [matDatepicker]="datepicker4"
+                                           formControlName="dateSatatement"
+                                           (click)="datepicker4.open()"
+                                           (focus)="datepicker4.open()"
+                                           [max]="maxDate" matInput>
+                                    <mat-datepicker-toggle [for]="datepicker4" class="block" matSuffix></mat-datepicker-toggle>
+                                    <mat-datepicker #datepicker4></mat-datepicker>
+                                </mat-form-field>
+                                <div class="mt-4" fxLayout="column" fxLayoutGap="8px">
+                                    <h2 class="title m-0">Servicio de Reparación</h2>
+                                    <div class="subheading-1" >Ingrese al menos un servicio de repación.</div>
+                                    <vex-repair-service>
+                                    </vex-repair-service>
+                                </div>
+                                <div class="actions" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="8px">
+                                    <button color="primary" mat-button matStepperPrevious type="button">ATRAS</button>
+                                    <button color="primary" mat-raised-button matStepperNext>
+                                        SIGUIENTE
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </mat-step>
+                <mat-step [stepControl]="statementFormGroup">
+                    <form [formGroup]="statementFormGroup">
+                        <ng-template matStepLabel>Repuestos</ng-template>
+                    </form>
+                </mat-step>
+                <mat-step [stepControl]="statementFormGroup">
+                    <form [formGroup]="statementFormGroup">
+                        <ng-template matStepLabel>Total</ng-template>
+                    </form>
+                </mat-step>
+
+
+            </mat-vertical-stepper>
+        </div>
+    </div>
+
+</ng-container>

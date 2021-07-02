@@ -1,0 +1,53 @@
+
+<div class="py-3 text-center">
+    <button (click)="createRepairService()" class="flex-auto" color="primary" mat-raised-button type="button">
+        <ic-icon [icon]="icPersonAdd" class="ltr:mr-3 rtl:ml-3" inline="true" size="18px"></ic-icon>
+        <span>Nuevo contacto emergencia</span>
+    </button>
+</div>
+<div class="pb-6" fxLayout="column" fxLayoutAlign="space-between">
+    <table [dataSource]="dataSource"
+           class="w-full"
+           fxFlex="auto"
+           mat-table
+           matSort>
+
+        <!-- Model Properties Column -->
+        <ng-container *ngFor="let column of tableColumns; trackBy: trackByProperty">
+            <ng-container *ngIf="column.type === 'text'" [matColumnDef]="column.property">
+                <th *matHeaderCellDef mat-header-cell mat-sort-header> {{ column.label }}</th>
+                <td *matCellDef="let row" [ngClass]="column.cssClasses" mat-cell>{{ row[column.property] }}</td>
+            </ng-container>
+
+            <ng-container *ngIf="column.type === 'button'" [matColumnDef]="column.property">
+                <ng-container *ngIf="column.property === 'menu'">
+                    <th *matHeaderCellDef mat-header-cell mat-sort-header> {{ column.label }}</th>
+                    <td *matCellDef="let row" [ngClass]="column.cssClasses" class="w-10" mat-cell>
+                        <button (click)="$event.stopPropagation(); deleteContactoEmergencia(row);"
+                                mat-icon-button
+                                type="button">
+                            <mat-icon [icIcon]="icDeleteForever"></mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+            </ng-container>
+        </ng-container>
+
+        <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+        <!--suppress UnnecessaryLabelJS -->
+        <tr (click)="updateRepairService(row)"
+            *matRowDef="let row; columns: visibleColumns;"
+            @fadeInUp
+            class="hover:bg-hover cursor-pointer"
+            mat-row></tr>
+    </table>
+
+    <div *ngIf="dataSource.filteredData.length === 0"
+         @scaleFadeIn
+         fxFlex="auto"
+         fxLayout="column"
+         fxLayoutAlign="center center">
+        <img class="m-12 h-16" src="assets/img/illustrations/no_data.svg">
+        <h2 class="headline m-0 text-center">Sin contactos de emergencia</h2>
+    </div>
+</div>
